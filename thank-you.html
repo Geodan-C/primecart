@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed - PrimeCart</title>
+    <style>
+        :root {
+            --primary-color: #d32f2f;
+            --secondary-color: #2e7d32;
+            --text-color: #222222;
+            --bg-gradient-start: #e0f2fe;
+            --bg-gradient-end: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            color: var(--text-color);
+            background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+            background-attachment: fixed;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .top-bar {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            padding: 16px 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .brand-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .brand-logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #0284c7;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-cart-icon {
+            width: 24px;
+            height: 24px;
+            fill: #0284c7;
+        }
+
+        .confirmation-wrapper {
+            width: 100%;
+            max-width: 650px;
+            margin: 60px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: #e8f5e9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 26px auto;
+            font-size: 3rem;
+            color: var(--secondary-color);
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: #000000;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #2c2c2c;
+            margin-bottom: 18px;
+        }
+
+        .order-card {
+            background: #ffffff;
+            border: 2px solid #bae6fd;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: left;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        .order-card .row {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            font-size: 1.05rem;
+        }
+
+        .order-card .row:last-child {
+            border-bottom: none;
+        }
+
+        .order-card .row span:first-child {
+            font-weight: 700;
+            color: #444;
+        }
+
+        .order-card .row span:last-child {
+            color: #111;
+            text-align: right;
+        }
+
+        .btn-home {
+            display: inline-block;
+            margin-top: 10px;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 14px 32px;
+            font-weight: 700;
+            border-radius: 6px;
+            font-size: 1.05rem;
+        }
+
+        footer {
+            margin-top: auto;
+            width: 100%;
+            text-align: center;
+            padding: 30px 20px;
+            color: #666;
+            font-size: 1rem;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            background: #ffffff;
+        }
+    </style>
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+</head>
+<body>
+
+    <header class="top-bar">
+        <div class="brand-wrapper">
+            <div class="brand-logo">PrimeCart</div>
+            <svg class="brand-cart-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+            </svg>
+        </div>
+    </header>
+
+    <div class="confirmation-wrapper">
+        <div class="success-icon">✔</div>
+        <h1 id="thankYouHeading">Thank You For Your Order!</h1>
+        <p id="thankYouName">Your order has been received and is being processed.</p>
+        <p>Our team will contact you shortly on the phone number you provided to confirm delivery details.</p>
+
+        <div class="order-card" id="orderCard">
+            <div class="row"><span>Order</span><span id="orderPackage">-</span></div>
+            <div class="row"><span>Amount</span><span id="orderValue">-</span></div>
+            <div class="row"><span>Email</span><span id="orderEmail">-</span></div>
+        </div>
+
+        <a href="index.html" class="btn-home">Back to Home</a>
+    </div>
+
+    <footer>
+        &copy; 2026 PrimeCart. All Rights Reserved.
+    </footer>
+
+    <!-- Read order details from the URL and fire the Meta Pixel "Purchase" event -->
+    <script>
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            const value = params.get('value');
+            const currency = params.get('currency') || 'NGN';
+            const contentName = params.get('content_name');
+            const name = params.get('name');
+            const email = params.get('em');
+            const phone = params.get('ph');
+
+            if (name) {
+                document.getElementById('thankYouName').textContent =
+                    'Hi ' + name + ', your order has been received and is being processed.';
+            }
+            if (contentName) {
+                document.getElementById('orderPackage').textContent = contentName;
+            }
+            if (value) {
+                document.getElementById('orderValue').textContent =
+                    '₦' + Number(value).toLocaleString() + ' ' + currency;
+            }
+            if (email) {
+                document.getElementById('orderEmail').textContent = email;
+            }
+
+            // Only fire Purchase if we actually arrived here with order details
+            // (guards against the event firing on a direct/blank visit to this page)
+            if (typeof fbq === 'function' && value && contentName) {
+                fbq('track', 'Purchase', {
+                    value: Number(value),
+                    currency: currency,
+                    content_name: contentName,
+                    content_type: 'product',
+                    em: email || undefined,
+                    ph: phone || undefined
+                });
+            }
+        })();
+    </script>
+</body>
+</html>

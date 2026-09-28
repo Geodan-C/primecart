@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varicos Mark Cream - PrimeCart</title>
+    <style>
+        :root {
+            --primary-color: #d32f2f;
+            --secondary-color: #2e7d32;
+            --text-color: #222222;
+            --bg-gradient-start: #e0f2fe; 
+            --bg-gradient-end: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            color: var(--text-color);
+            background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+            background-attachment: fixed;
+            line-height: 1.6;
+            padding-bottom: 70px; 
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            background: transparent;
+        }
+
+        /* Top Header Sticky Bar Configuration */
+        .top-bar {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            padding: 16px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .brand-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .brand-logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: #0284c7; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-cart-icon {
+            width: 24px;
+            height: 24px;
+            fill: #0284c7;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .price-badge {
+            font-size: 1.4rem; 
+            font-weight: 700;
+            color: var(--secondary-color);
+            background: #e8f5e9;
+            padding: 6px 16px;
+            border-radius: 4px;
+            margin-right: 10px; 
+        }
+
+        .btn-order-top {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 24px;
+            font-weight: 700;
+            border-radius: 4px;
+            font-size: 1.05rem;
+            transition: background 0.3s;
+        }
+
+        .btn-order-top:hover {
+            background-color: #b71c1c;
+        }
+
+        /* Mobile-Responsive Image Containers */
+        .image-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background-color: transparent;
+        }
+
+        .product-image {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        /* Layered Badge Container for Vein 3 */
+        .layered-image-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .badge-overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 15%; 
+            min-width: 80px;
+            max-width: 140px;
+            z-index: 10;
+            height: auto;
+        }
+
+        .content-section {
+            padding: 45px 60px;
+            text-align: left;
+            max-width: 950px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 600px) {
+            .top-bar {
+                padding: 12px 15px;
+            }
+            .brand-logo {
+                font-size: 1.25rem;
+            }
+            .price-badge {
+                font-size: 1.15rem;
+                padding: 4px 10px;
+                margin-right: 6px;
+            }
+            .btn-order-top {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+            .content-section {
+                padding: 25px 20px;
+            }
+            .form-section {
+                margin: 20px 15px !important;
+                padding: 30px 20px !important;
+            }
+            .badge-overlay {
+                top: 10px;
+                left: 10px;
+                width: 20%;
+            }
+            .btn-submit {
+                max-width: 100% !important;
+            }
+        }
+
+        h2 {
+            font-size: 1.85rem;
+            font-weight: 800;
+            margin-top: 10px;
+            margin-bottom: 22px;
+            color: #000000;
+            line-height: 1.3;
+            text-align: left;
+        }
+
+        p {
+            margin-bottom: 22px;
+            font-size: 1.25rem;
+            color: #2c2c2c;
+            font-weight: 400;
+            text-align: left;
+        }
+
+        strong {
+            font-weight: 700;
+            color: #000000;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: rgba(0, 0, 0, 0.08);
+            margin: 45px 0;
+        }
+
+        .feature-list, .step-list {
+            list-style: none;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .feature-list li {
+            margin-bottom: 18px;
+            font-size: 1.25rem;
+            position: relative;
+            padding-left: 34px;
+            color: #2c2c2c;
+            text-align: left;
+        }
+
+        .feature-list li::before {
+            content: "✔";
+            color: var(--secondary-color);
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+        }
+
+        .step-list {
+            counter-reset: step-counter;
+        }
+
+        .step-list li {
+            counter-increment: step-counter;
+            margin-bottom: 22px;
+            font-size: 1.25rem;
+            position: relative;
+            padding-left: 44px;
+            color: #2c2c2c;
+            text-align: left;
+        }
+
+        .step-list li::before {
+            content: counter(step-counter);
+            background-color: rgba(0, 0, 0, 0.05);
+            color: #222222;
+            font-weight: 700;
+            font-size: 1rem;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+
+        /* Order Form Section */
+        .form-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+            border: 2px solid #bae6fd;
+            border-radius: 12px;
+            padding: 40px 50px;
+            margin: 40px auto;
+            max-width: 850px;
+            text-align: left;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-title {
+            text-align: center;
+            color: #0369a1; 
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 700;
+            font-size: 1.15rem;
+            text-align: left;
+        }
+
+        .phone-input-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .country-code-select {
+            flex: 0 0 110px;
+            min-width: 110px;
+        }
+
+        .phone-main-input {
+            flex: 1;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 1.15rem;
+            color: #111111;
+            background-color: #ffffff;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none;
+            border-color: #0284c7;
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            margin: 30px auto 10px auto;
+            background-color: var(--secondary-color);
+            color: #ffffff;
+            border: none;
+            padding: 18px;
+            font-size: 1.35rem;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.2);
+            transition: background 0.3s, transform 0.1s;
+        }
+
+        .btn-submit:hover {
+            background-color: #1b5e20;
+        }
+
+        .btn-submit:active {
+            transform: scale(0.99);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .form-message {
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-top: 18px;
+            display: none;
+        }
+
+        .form-message.success {
+            color: var(--secondary-color);
+        }
+
+        .form-message.error {
+            color: var(--primary-color);
+        }
+
+        .mobile-sticky-btn {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 1100px;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            text-align: center;
+            text-decoration: none;
+            padding: 18px;
+            font-weight: 700;
+            font-size: 1.25rem;
+            z-index: 999;
+            box-shadow: 0 -3px 12px rgba(0,0,0,0.15);
+        }
+
+        @media (min-width: 1101px) {
+            .mobile-sticky-btn {
+                border-radius: 6px 6px 0 0;
+            }
+        }
+    </style>
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Header Sticky Bar -->
+        <header class="top-bar">
+            <div class="brand-wrapper">
+                <div class="brand-logo">PrimeCart</div>
+                <svg class="brand-cart-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+                </svg>
+            </div>
+            <div class="header-actions">
+                <div class="price-badge">₦28,000</div>
+                <a href="#order-form" class="btn-order-top">ORDER NOW</a>
+            </div>
+        </header>
+
+        <!-- Product Images -->
+        <div class="image-wrapper">
+            <img class="product-image" src="vein-1.png" alt="Varicos Mark Cream - PrimeCart" loading="eager" fetchpriority="high">
+        </div>
+
+        <div class="image-wrapper">
+            <img class="product-image" src="vein-2.png" alt="Varicos Mark Cream Benefits" loading="lazy">
+        </div>
+
+        <!-- Core Content Section -->
+        <main class="content-section">
+            <h2>🦵 Smooth, Clear, Confident Skin Again</h2>
+            <p>Are you tired of covering up due to <strong>bulging varicose veins or deep stretch marks</strong>?</p>
+            <p>Dark spider veins and uneven skin textures don't just affect your appearance—they hold back your everyday confidence.</p>
+            <p>Now you can <strong>effectively fade blemishes, soothe your legs, and unlock smoother skin</strong> without risky surgical options.</p>
+        </main>
+            
+        <!-- Layered Image Block -->
+        <div class="image-wrapper">
+            <div class="layered-image-container">
+                <img class="badge-overlay" src="product-of-the-year.png" alt="Product of the Year Badge" loading="lazy">
+                <img class="product-image" src="vein-3.jpg" alt="Skin Repair Formula" loading="lazy">
+            </div>
+        </div>
+
+        <!-- Content Section -->
+        <main class="content-section">
+            <h2>✨ 2-in-1 Skin Repair Formula</h2>
+            <p>Our fast-acting, concentrated recovery cream targets deep skin blemishes to:</p>
+            <ul class="feature-list">
+                <li>Diminish the appearance of <strong>varicose & spider veins</strong></li>
+                <li>Visibly fade stubborn <strong>stretch marks</strong> and even out tone</li>
+                <li>Promote healthy local <strong>circulation</strong> and cellular repair</li>
+                <li>Deliver deep hydration for structural skin resilience</li>
+            </ul>
+            <p>💡 Experience a dual-action formula that handles both problems with a single daily application.</p>
+        </main>
+
+        <!-- Product Image 4 -->
+        <div class="image-wrapper">
+            <img class="product-image" src="vein-4.jpg" alt="Visible Skin Transformation" loading="lazy">
+        </div>
+
+        <!-- Content Section -->
+        <main class="content-section">
+            <h2>🧬 Visible Results You Can Feel</h2>
+            <p>Real results you will notice within weeks of continuous usage:</p>
+            <ul class="feature-list">
+                <li>Significantly smoother, clearer, and uniform skin surfaces</li>
+                <li>Faded vascular lines and softened stretch mark indentations</li>
+                <li>Relieved, deeply nourished, and vibrant-looking legs</li>
+            </ul>
+
+            <hr>
+
+            <h2>⚡ Fast-Absorbing & Easy to Use</h2>
+            <ul class="feature-list">
+                <li>Lightweight, non-sticky premium cream texture</li>
+                <li>Penetrates quickly without staining your clothing</li>
+                <li>Mild and highly stable for all skin types</li>
+                <li>Perfect for calves, thighs, arms, and midsection areas</li>
+            </ul>
+
+            <hr>
+
+            <h2>⏱️ No Need for Expensive Treatments</h2>
+            <p>Avoid high clinic bills, painful laser procedures, and lengthy downtimes. Restore your skin gradually and safely from the comfort of home.</p>
+
+            <hr>
+
+            <h2>💬 How to Use</h2>
+            <ol class="step-list">
+                <li>Wash and thoroughly dry the targeted area before application.</li>
+                <li>Apply a generous amount of cream over the affected zones.</li>
+                <li>Massage firmly in an upward, circular motion until fully absorbed.</li>
+                <li>Apply twice every single day to maximize your personal results.</li>
+            </ol>
+
+            <hr>
+
+            <h2>🎯 Perfect For:</h2>
+            <ul class="feature-list">
+                <li>Swollen varicose veins & visible spider veins</li>
+                <li>Post-pregnancy or weight fluctuations stretch marks</li>
+                <li>Rough or uneven dermis patches</li>
+                <li>Dehydrated, fatigued, or aging skin</li>
+            </ul>
+        </main>
+
+        <!-- Product Image 5 -->
+        <div class="image-wrapper">
+            <img class="product-image" src="vein-5.jpg" alt="Special Limited Time Offer" loading="lazy">
+        </div>
+
+        <!-- Content Section -->
+        <div class="content-section">
+            <h2>🛒 Feel Confident in Your Skin Again</h2>
+            <p>Stop hiding under heavy layers. Reclaim your freedom to wear what you love with absolute pride.</p>
+            <p>👉 <strong>Secure your package right away to launch your total skin transformation!</strong></p>
+            
+            <div style="background: rgba(46, 125, 50, 0.1); padding: 25px; border-radius: 4px; margin-top: 25px;">
+                <h3 style="color: var(--secondary-color); font-size: 1.35rem; font-weight: 800; margin-bottom: 8px; text-align: left;">🎁 Limited-Time Offer</h3>
+                <p style="margin: 0; font-size: 1.2rem;">Promotional pricing remains valid only for today's orders. Fast nation-wide shipping included. 100% genuine product guarantee.</p>
+            </div>
+        </div>
+
+        <!-- Checkout Form Section -->
+        <section id="order-form" class="form-section">
+            <h2 class="form-title">📦 Place Your Order Below</h2>
+            <form id="checkoutForm">
+                
+                <!-- StaticForms Access Key Configuration -->
+                <input type="hidden" name="accessKey" value="sf_697fcb936ec9987fe02666b6">
+
+                <!-- Honeypot field (spam protection) - must stay empty -->
+                <input type="text" name="honeypot" style="display:none" tabindex="-1" autocomplete="off">
+                
+                <!-- Fixed subject for StaticForms email configuration -->
+                <input type="hidden" id="formSubject" name="subject" value="Varicose Vein Cream">
+                
+                <!-- Name -->
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                </div>
+
+                <!-- Phone Number -->
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <div class="phone-input-container">
+                        <select id="primary_cc" name="Primary Country Code" class="country-code-select" required>
+                            <option value="+234" selected>NG (+234)</option>
+                            <option value="+233">GH (+233)</option>
+                            <option value="+254">KE (+254)</option>
+                            <option value="+27">ZA (+27)</option>
+                            <option value="+44">UK (+44)</option>
+                            <option value="+1">US (+1)</option>
+                        </select>
+                        <input type="tel" id="primary_raw" name="Phone Number" required placeholder="Enter phone number">
+                    </div>
+                </div>
+
+                <!-- Alternative Phone Number -->
+                <div class="form-group">
+                    <label for="alt_phone">Alternative Phone Number (Optional)</label>
+                    <div class="phone-input-container">
+                        <select id="alt_cc" name="Alternative Country Code" class="country-code-select">
+                            <option value="+234" selected>NG (+234)</option>
+                            <option value="+233">GH (+233)</option>
+                            <option value="+254">KE (+254)</option>
+                            <option value="+27">ZA (+27)</option>
+                            <option value="+44">UK (+44)</option>
+                            <option value="+1">US (+1)</option>
+                        </select>
+                        <input type="tel" id="alt_raw" name="Alternative Phone Number" placeholder="Secondary phone number">
+                    </div>
+                </div>
+
+                <!-- Delivery Address -->
+                <div class="form-group">
+                    <label for="address">Delivery Address</label>
+                    <textarea id="address" name="Delivery Address" rows="3" required placeholder="House number, street name, city, and area details"></textarea>
+                </div>
+
+                <!-- Delivery State -->
+                <div class="form-group">
+                    <label for="state">State</label>
+                    <select id="state" name="Delivery State" required>
+                        <option value="" disabled selected>Select your state</option>
+                        <option value="Abia">Abia</option>
+                        <option value="Adamawa">Adamawa</option>
+                        <option value="Akwa Ibom">Akwa Ibom</option>
+                        <option value="Anambra">Anambra</option>
+                        <option value="Bauchi">Bauchi</option>
+                        <option value="Bayelsa">Bayelsa</option>
+                        <option value="Benue">Benue</option>
+                        <option value="Borno">Borno</option>
+                        <option value="Cross River">Cross River</option>
+                        <option value="Delta">Delta</option>
+                        <option value="Ebonyi">Ebonyi</option>
+                        <option value="Edo">Edo</option>
+                        <option value="Ekiti">Ekiti</option>
+                        <option value="Enugu">Enugu</option>
+                        <option value="FCT - Abuja">FCT - Abuja</option>
+                        <option value="Gombe">Gombe</option>
+                        <option value="Imo">Imo</option>
+                        <option value="Jigawa">Jigawa</option>
+                        <option value="Kaduna">Kaduna</option>
+                        <option value="Kano">Kano</option>
+                        <option value="Katsina">Katsina</option>
+                        <option value="Kebbi">Kebbi</option>
+                        <option value="Kogi">Kogi</option>
+                        <option value="Kwara">Kwara</option>
+                        <option value="Lagos">Lagos</option>
+                        <option value="Nasarawa">Nasarawa</option>
+                        <option value="Niger">Niger</option>
+                        <option value="Ogun">Ogun</option>
+                        <option value="Ondo">Ondo</option>
+                        <option value="Osun">Osun</option>
+                        <option value="Oyo">Oyo</option>
+                        <option value="Plateau">Plateau</option>
+                        <option value="Rivers">Rivers</option>
+                        <option value="Sokoto">Sokoto</option>
+                        <option value="Taraba">Taraba</option>
+                        <option value="Yobe">Yobe</option>
+                        <option value="Zamfara">Zamfara</option>
+                    </select>
+                </div>
+
+                <!-- Delivery Package -->
+                <div class="form-group">
+                    <label for="quantity">Select Quantity</label>
+                    <select id="quantity" name="Delivery Package" required>
+                        <option value="1 Bottle Varicose Vein Cream - ₦28,000" data-value="28000">1 Bottle Varicose Vein Cream - ₦28,000</option>
+                        <option value="2 Bottles Varicose Vein Cream (Promo Pack) - ₦52,000" data-value="52000">2 Bottles Varicose Vein Cream (Promo Pack) - ₦52,000</option>
+                        <option value="3 Bottles Varicose Vein Cream (Mega Value Promo Pack) - ₦75,000" data-value="75000">3 Bottles Varicose Vein Cream (Mega Value Promo Pack) - ₦75,000</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit" id="submitBtn">PLACE MY ORDER</button>
+                <p class="form-message" id="formMessage"></p>
+            </form>
+        </section>
+
+        <!-- Basic Footer -->
+        <footer style="text-align: center; padding: 40px 20px; color: #666; font-size: 1.05rem; border-top: 1px solid rgba(0,0,0,0.05); background: #ffffff;">
+            &copy; 2026 PrimeCart. All Rights Reserved.
+        </footer>
+
+    </div>
+
+    <!-- Mobile Sticky Button -->
+    <a href="#order-form" class="mobile-sticky-btn">ORDER NOW - ₦28,000</a>
+
+    <!-- Checkout form handler: AJAX submit to StaticForms + Meta Pixel Lead/Purchase events -->
+    <script>
+        document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const form = e.target;
+            const submitBtn = document.getElementById('submitBtn');
+            const formMessage = document.getElementById('formMessage');
+
+            // Honeypot check - if filled, silently drop (likely a bot)
+            if (form.honeypot.value) {
+                return;
+            }
+
+            // Prepend country codes to phone numbers before sending
+            const primaryCC = document.getElementById('primary_cc').value;
+            const primaryRaw = document.getElementById('primary_raw').value.trim();
+            const altCC = document.getElementById('alt_cc').value;
+            const altRaw = document.getElementById('alt_raw').value.trim();
+
+            if (primaryRaw) {
+                document.getElementById('primary_raw').value = primaryCC + " " + primaryRaw;
+            }
+            if (altRaw) {
+                document.getElementById('alt_raw').value = altCC + " " + altRaw;
+            } else {
+                document.getElementById('alt_raw').removeAttribute('name');
+            }
+
+            // Lock the button so it can't be double-clicked
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Placing your order...';
+            formMessage.style.display = 'none';
+
+            const formData = new FormData(form);
+            const selectedOption = document.getElementById('quantity').selectedOptions[0];
+            const orderValue = selectedOption ? parseInt(selectedOption.dataset.value, 10) : 0;
+
+            fetch('https://api.staticforms.xyz/submit', {
+                method: 'POST',
+                headers: { 'Accept': 'application/json' },
+                body: formData
+            })
+            .then(function(response) {
+                if (!response.ok) {
+                    throw new Error('Submission failed');
+                }
+                return response.json().catch(function() { return {}; });
+            })
+            .then(function() {
+                // Order confirmed - send order details to the thank-you page,
+                // which fires the Meta Pixel "Purchase" event on load.
+                const packageName = document.getElementById('quantity').value;
+                const customerName = document.getElementById('name').value.trim();
+                const customerEmail = document.getElementById('email').value.trim().toLowerCase();
+                const customerPhone = (
+                    document.getElementById('primary_cc').value +
+                    document.getElementById('primary_raw').value.replace(/\D/g,'')
+                );
+
+                const params = new URLSearchParams({
+                    value: orderValue,
+                    currency: 'NGN',
+                    content_name: packageName,
+                    name: customerName,
+                    em: customerEmail,
+                    ph: customerPhone
+                });
+
+                window.location.href = 'thank-you.html?' + params.toString();
+            })
+            .catch(function(err) {
+                formMessage.textContent = '❌ Something went wrong. Please try again or contact us directly.';
+                formMessage.className = 'form-message error';
+                formMessage.style.display = 'block';
+                submitBtn.textContent = 'PLACE MY ORDER';
+                submitBtn.disabled = false;
+            });
+        });
+    </script>
+</body>
+</html>
